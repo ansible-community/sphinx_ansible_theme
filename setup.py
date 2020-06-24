@@ -25,11 +25,19 @@ import site
 import setuptools
 import sys
 
+
 # See https://github.com/pypa/pip/issues/7953
 site.ENABLE_USER_SITE = "--user" in sys.argv[1:]
 
 
+# See https://github.com/pypa/setuptools_scm/issues/342
+def local_scheme(version):
+    """Make version compatible with pypi."""
+    return ""
+
+
 if __name__ == "__main__":
     setuptools.setup(
-        use_scm_version=True, setup_requires=["setuptools_scm"],
+        use_scm_version={"local_scheme": local_scheme},
+        setup_requires=["setuptools_scm"],
     )
