@@ -42,7 +42,7 @@ AUTHOR = 'Ansible, Inc'
 # They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # TEST: 'sphinxcontrib.fulltoc'
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx_ansible_theme.ext.pygments_lexer', 'notfound.extension']
 
 # Later on, add 'sphinx.ext.viewcode' to the list if you want to have
 # colorized code generated too for references.
@@ -129,7 +129,7 @@ html_short_title = 'Ansible Documentation'
 html_show_sphinx = False
 
 html_theme_options = {
-    'canonical_url': "https://docs.ansible.com/ansible/latest/",
+    # 'canonical_url': "https://docs.ansible.com/ansible/latest/",
     'vcs_pageview_mode': 'edit'
 }
 
@@ -142,9 +142,9 @@ html_context = {
     'github_root_dir': 'devel/lib/ansible',
     'github_cli_version': 'devel/lib/ansible/cli/',
     'current_version': version,
-    'latest_version': 'master',
+    'latest_version': 'latest',
     # list specifically out of order to make latest work
-    'available_versions': ('latest', '2.8', '2.7', 'devel'),
+    'available_versions': ('latest'),
     'css_files': ('_static/ansible.css',  # overrides to the standard theme
                   ),
 }
