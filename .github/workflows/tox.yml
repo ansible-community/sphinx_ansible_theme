@@ -84,7 +84,7 @@ jobs:
 
     env:
       PY_COLORS: 1
-      TOXENV: build-dists,metadata-validation
+      TOXENV: packaging
       TOX_PARALLEL_NO_SPINNER: 1
 
     steps:
