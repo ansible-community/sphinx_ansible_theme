@@ -1,4 +1,9 @@
 ---
+exclude: |
+    (?x)(
+        ^sphinx_ansible_theme/static/fonts/|
+        another-file-to-ignore
+    )
 repos:
   - repo: https://github.com/python/black.git
     rev: 19.10b0

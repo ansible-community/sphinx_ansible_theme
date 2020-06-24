@@ -17,3 +17,6 @@ rules:
   line-length: disable
   truthy:
     allowed-values: ['true', 'false', 'on']
+  indentation:
+    level: error
+    indent-sequences: consistent
