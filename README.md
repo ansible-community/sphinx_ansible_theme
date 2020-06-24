@@ -1,2 +1,5 @@
 # sphinx_ansible_theme
-WIP: A reusable Ansible Sphinx Theme
+
+A reusable Ansible Sphinx Theme.
+
+Demo-site at https://sphinx-ansible-theme.readthedocs.io/en/latest/
