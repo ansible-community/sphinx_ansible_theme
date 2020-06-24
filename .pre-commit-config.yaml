@@ -2,7 +2,7 @@
 exclude: |
     (?x)(
         ^sphinx_ansible_theme/static/fonts/|
-        another-file-to-ignore
+        ^docs/conf.py$
     )
 repos:
   - repo: https://github.com/python/black.git

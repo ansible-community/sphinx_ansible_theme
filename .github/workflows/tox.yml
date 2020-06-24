@@ -2,8 +2,14 @@ name: gh
 
 on:
   push:
+    branches:
+    - master
   pull_request:
+    branches:
+    - master
   create:
+    branches:
+    - master
     tags:
     - "[0-9]+.[0-9]+.*"
   schedule:
@@ -12,7 +18,7 @@ on:
   - cron: 2 18 * * 5
 
 jobs:
-  tox:
+  tests:
     name: >-
       ${{ matrix.env.TOXENV }}
     runs-on: ${{ matrix.os }}
@@ -24,7 +30,7 @@ jobs:
         os:
         - ubuntu-latest
         env:
-        - TOXENV: linting
+        - TOXENV: linters
         - TOXENV: docs
         - TOXENV: packaging
     steps:
@@ -72,7 +78,7 @@ jobs:
   publish:
     name: Publish to PyPI registry
     needs:
-    - linters
+    - tests
     if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
 
