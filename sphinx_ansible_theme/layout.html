@@ -166,7 +166,9 @@
           {% endblock %}
         </div>
         {% endblock %}
-         {% block extranav %}{% include "ansible_extranav.html" %}{% endblock %}
+        {% if show_extranav %}
+          {% block extranav %}{% include "ansible_extranav.html" %}{% endblock %}
+        {% endif %}
       </div>
     </nav>
   </div>
