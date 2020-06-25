@@ -136,14 +136,9 @@
             {% if READTHEDOCS and current_version %}
               {%- set nav_version = current_version %}
             {% endif %}
-            {% if nav_version %}
-              <div class="version">
-                {{ nav_version }}
-              </div>
+            {% include "ansible_versions.html" %}
             {% endif %}
-          {% endif %}
 
-          {% include "ansible_versions.html" %}
           {% include "ansible_searchbox.html" %}
 
           {% endblock %}
