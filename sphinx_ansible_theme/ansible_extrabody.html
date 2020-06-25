@@ -19,7 +19,5 @@
   <img class="DocSiteNav-logo"
     src="{{ pathto('_static/', 1) }}images/logo_invert.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">
-    Documentation
-  </div>
+  <div class="DocSiteNav-title">{{ docstitle | default('Documentation') }}</div>
 </a>
