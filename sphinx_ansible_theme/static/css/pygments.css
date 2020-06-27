@@ -74,3 +74,8 @@
 .highlight .vm { color: #bb60d5 } /* Name.Variable.Magic */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
 .highlight .gc { color: #909090; background-color: #eaf2f5 }
+
+/* Assure reading examples does not require horizontal scrolling */
+.rst-content div[class^="highlight"] pre {
+    white-space: pre-wrap;
+}
