@@ -80,10 +80,9 @@ jobs:
         path: .tox/**/log/
 
   publish:
-    name: Publish to PyPI registry
+    name: Publish to PyPI-ish registries
     needs:
     - tests
-    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
 
     env:
@@ -100,10 +99,23 @@ jobs:
         tox
     - name: Check out src from Git
       uses: actions/checkout@v2
-    - name: Get history and tags for SCM versioning to work
-      run: |
-        git fetch --prune --unshallow
-        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      with:
+        fetch-depth: >-
+          ${{
+              (
+                github.event_name == 'create' &&
+                github.event.ref_type == 'tag'
+              ) && 1 || 0
+          }}
+    - name: Drop Git tags from HEAD for non-tag-create events
+      if: >-
+        github.event_name != 'create' ||
+        github.event.ref_type != 'tag'
+      run: >-
+        git tag --points-at HEAD
+        |
+        xargs git tag --delete
+      shell: bash
     - name: Instruct setuptools-scm not to add a local version part
       if: >-
         github.event_name == 'push' &&
@@ -119,9 +131,14 @@ jobs:
       run: python -m tox -p auto --parallel-live -vvvv
     - name: Publish to test.pypi.org
       if: >-
-        github.event_name == 'push' &&
-        github.ref == format(
-          'refs/heads/{0}', github.event.repository.default_branch
+        (
+          github.event_name == 'push' &&
+          github.ref == format(
+            'refs/heads/{0}', github.event.repository.default_branch
+          )
+        ) || (
+          github.event_name == 'create' &&
+          github.event.ref_type == 'tag'
         )
       uses: pypa/gh-action-pypi-publish@master
       with:
