@@ -4,14 +4,18 @@ on:
   push:
     branches:
     - master
+    tags-ignore:
+    - >-
+      **
   pull_request:
     branches:
     - master
-  create:
-    branches:
-    - master
-    tags:
+  create:  # is used for publishing to PyPI and TestPyPI
+    tags:  # any tag regardless of its name, no branches
     - "[0-9]+.[0-9]+.*"
+    branches-ignore:
+    - >-
+      **
   schedule:
   # Run every Friday at 18:02 UTC
   # https://crontab.guru/#2_18_*_*_5
