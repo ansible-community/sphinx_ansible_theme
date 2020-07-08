@@ -41,4 +41,8 @@ def setup(app):
         rtd_locale_path = path.join(path.abspath(path.dirname(__file__)), "locale")
         app.add_message_catalog("sphinx", rtd_locale_path)
 
-    return {"parallel_read_safe": True, "parallel_write_safe": True}
+    return {
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+        "version": __version_full__,
+    }
