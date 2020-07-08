@@ -1,6 +1,5 @@
 #! /usr/bin/env python
-#  Copyright (c) 2019 Red Hat, Inc.
-#  Copyright (c) 2015-2018 Cisco Systems, Inc.
+#  Copyright (c) 2020 Red Hat, Inc.
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to
@@ -19,7 +18,7 @@
 #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
-"""Molecule distribution package setuptools installer."""
+"""sphinx_ansible_theme distribution package setuptools installer."""
 
 import site
 import setuptools
@@ -30,14 +29,8 @@ import sys
 site.ENABLE_USER_SITE = "--user" in sys.argv[1:]
 
 
-# See https://github.com/pypa/setuptools_scm/issues/342
-def local_scheme(version):
-    """Make version compatible with pypi."""
-    return ""
-
-
 if __name__ == "__main__":
     setuptools.setup(
-        use_scm_version={"local_scheme": local_scheme},
-        setup_requires=["setuptools_scm"],
+        use_scm_version=True,
+        setup_requires=["setuptools_scm", "setuptools_scm_git_archive"],
     )
