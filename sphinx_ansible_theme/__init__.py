@@ -31,9 +31,11 @@ def get_html_theme_path():
 # See http://www.sphinx-doc.org/en/stable/theming.html#distribute-your-theme-as-a-python-package
 def setup(app):
     """Sphinx entry point."""
-    if sphinx.version_info >= (1, 6, 0):
-        # Register the theme that can be referenced without adding a theme path
-        app.add_html_theme("sphinx_ansible_theme", path.abspath(path.dirname(__file__)))
+    app.require_sphinx("1.6")
+    # Register the theme that can be referenced without adding a theme path
+    app.add_html_theme(
+        "sphinx_ansible_theme", path.abspath(path.dirname(__file__)),
+    )
 
     if sphinx.version_info >= (1, 8, 0):
         # Add Sphinx message catalog for newer versions of Sphinx
@@ -41,4 +43,8 @@ def setup(app):
         rtd_locale_path = path.join(path.abspath(path.dirname(__file__)), "locale")
         app.add_message_catalog("sphinx", rtd_locale_path)
 
-    return {"parallel_read_safe": True, "parallel_write_safe": True}
+    return {
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+        "version": __version_full__,
+    }
