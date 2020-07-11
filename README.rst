@@ -1,4 +1,5 @@
-# sphinx_ansible_theme
+sphinx_ansible_theme
+--------------------
 
 A reusable Ansible Sphinx Theme.
 
