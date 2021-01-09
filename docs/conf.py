@@ -17,8 +17,8 @@ AUTHOR = 'Ansible Community'
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx_ansible_theme.ext.pygments_lexer',
     'notfound.extension',
+    'sphinx_antsibull_ext',
 ]
 
 # The suffix of source filenames.

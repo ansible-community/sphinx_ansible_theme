@@ -17,57 +17,9 @@
         overflow: visible;
     }
 }
-/*!
- * We use the class documentation-table for attribute tables where the first
- * column is the name of an attribute and the second column is the description.
- */
-/*! These tables look like this:
- *
- *  Attribute Name     Description
- *  --------------     -----------
- *  **NAME**           This is a multi-line description
- *  str/required       that can span multiple lines
- *  added in x.y
- *                     With multiple paragraphs
- *  --------------     -----------
- *
- * **NAME** is given the class .value-name
- * str is given the class .value-type
- * / is given the class .value-separator
- * required is given the class .value-required
- * added in x.y is given the class .value-added-in
- */
 /*! The extra .rst-content is so this will override rtd theme */
-.rst-content table.documentation-table td {
-    vertical-align: top;
-}
-table.documentation-table td:first-child {
-    white-space: nowrap;
-    vertical-align: top;
-}
 table.documentation-table td:first-child p:first-child {
     font-weight: 700;
-    display: inline;
-}
-/*! This is now redundant with above position-based styling */
-/*!
-table.documentation-table .value-name {
-    font-weight: bold;
-    display: inline;
-}
-*/
-table.documentation-table .value-type {
-    font-size: x-small;
-    color: purple;
-    display: inline;
-}
-table.documentation-table .value-separator {
-    font-size: x-small;
-    display: inline;
-}
-table.documentation-table .value-required {
-    font-size: x-small;
-    color: red;
     display: inline;
 }
 .value-added-in {
@@ -190,22 +142,6 @@ table {
     overflow-x: auto;
     display: block;
     max-width: 100%;
-}
-.documentation-table td.elbow-placeholder {
-    border-left: 1px solid #000;
-    border-top: 0;
-    width: 30px;
-    min-width: 30px;
-}
-.documentation-table td,
-.documentation-table th {
-    padding: 4px;
-    border-left: 1px solid #000;
-    border-top: 1px solid #000;
-}
-.documentation-table {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
 }
 @media print {
     * {
@@ -457,16 +393,11 @@ h6 {
     }
 }
 /* ansibleOptionLink is adapted from h1 .headerlink in sphinx_rtd_theme */
-tr:hover .ansibleOptionLink::after {
-    visibility: visible;
-}
 tr .ansibleOptionLink::after {
     content: "";
     font-family: FontAwesome;
 }
 tr .ansibleOptionLink {
-    visibility: hidden;
-    display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
