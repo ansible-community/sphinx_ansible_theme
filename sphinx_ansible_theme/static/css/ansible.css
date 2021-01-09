@@ -191,12 +191,6 @@ table {
     display: block;
     max-width: 100%;
 }
-.documentation-table td.elbow-placeholder {
-    border-left: 1px solid #000;
-    border-top: 0;
-    width: 30px;
-    min-width: 30px;
-}
 .documentation-table td,
 .documentation-table th {
     padding: 4px;
@@ -457,16 +451,11 @@ h6 {
     }
 }
 /* ansibleOptionLink is adapted from h1 .headerlink in sphinx_rtd_theme */
-tr:hover .ansibleOptionLink::after {
-    visibility: visible;
-}
 tr .ansibleOptionLink::after {
-    content: "";
+    content: "" !important;
     font-family: FontAwesome;
 }
 tr .ansibleOptionLink {
-    visibility: hidden;
-    display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
