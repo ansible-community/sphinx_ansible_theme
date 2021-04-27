@@ -12,7 +12,7 @@
 
   <hr/>
 
-{% if show_swift %}
+{% if theme_show_swift and theme_swift_id %}
 {# Ansible search with Swift - do not remove #}
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -20,7 +20,7 @@
   e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
   })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-_st('install','{{ swift_id }}','2.0.0');
+_st('install','{{ theme_swift_id }}','2.0.0');
 </script>
 {% endif %}
 
