@@ -1,3 +1,6 @@
+{%- if theme_display_version %}
+  {%- include "ansible_versions.html" %}
+{%- endif %}
 {%- if 'singlehtml' not in builder %}
 <div role="search">
   <form id="rtd-search-form" class="wy-form"{% if not theme_show_swift and not theme_swift_id %} action="{{ pathto('search') }}"{% endif %} method="get">
