@@ -1,4 +1,4 @@
-{%- expands "sphinx_rtd_theme/breadcrumbs.html" %}
+{%- extends "sphinx_rtd_theme/breadcrumbs.html" %}
 {%- block breadcrumbs_aside %}
   <li class="wy-breadcrumbs-aside">
     {%- if hasdoc(pagename) and display_vcs_links %}
