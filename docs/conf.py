@@ -42,7 +42,11 @@ AUTHOR = 'Ansible, Inc'
 # They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # TEST: 'sphinxcontrib.fulltoc'
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx_ansible_theme.ext.pygments_lexer', 'notfound.extension']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx_ansible_theme.ext.pygments_lexer',
+    'notfound.extension',
+]
 
 # Later on, add 'sphinx.ext.viewcode' to the list if you want to have
 # colorized code generated too for references.
@@ -260,25 +264,6 @@ latex_documents = [
 # latex_use_modindex = True
 
 autoclass_content = 'both'
-
-# Note:  Our strategy for intersphinx mappings is to have the upstream build location as the
-# canonical source and then cached copies of the mapping stored locally in case someone is building
-# when disconnected from the internet.  We then have a script to update the cached copies.
-#
-# Because of that, each entry in this mapping should have this format:
-#   name: ('http://UPSTREAM_URL', (None, 'path/to/local/cache.inv'))
-#
-# The update script depends on this format so deviating from this (for instance, adding a third
-# location for the mappning to live) will confuse it.
-intersphinx_mapping = {'python': ('https://docs.python.org/2/', (None, '../python2.inv')),
-                       'python3': ('https://docs.python.org/3/', (None, '../python3.inv')),
-                       'jinja2': ('http://jinja.palletsprojects.com/', (None, '../jinja2.inv')),
-                       'ansible_2_9': ('https://docs.ansible.com/ansible/2.9/', (None, '../ansible_2_9.inv')),
-                       'ansible_2_8': ('https://docs.ansible.com/ansible/2.8/', (None, '../ansible_2_8.inv')),
-                       'ansible_2_7': ('https://docs.ansible.com/ansible/2.7/', (None, '../ansible_2_7.inv')),
-                       'ansible_2_6': ('https://docs.ansible.com/ansible/2.6/', (None, '../ansible_2_6.inv')),
-                       'ansible_2_5': ('https://docs.ansible.com/ansible/2.5/', (None, '../ansible_2_5.inv')),
-                       }
 
 # linckchecker settings
 linkcheck_ignore = [
