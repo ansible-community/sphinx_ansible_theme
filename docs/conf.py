@@ -144,7 +144,7 @@ html_context = {
     'current_version': version,
     'latest_version': 'latest',
     # list specifically out of order to make latest work
-    'available_versions': ('latest'),
+    'available_versions': ('latest', ),
     'css_files': ('_static/ansible.css',  # overrides to the standard theme
                   ),
 }
