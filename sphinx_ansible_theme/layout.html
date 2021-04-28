@@ -214,9 +214,9 @@
         <div class="rst-content">
         {%- endif %}
           {% include "breadcrumbs.html" %}
-          {% include "ansible_banner.html" %}
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
           {%- block document %}
+           {% include "ansible_banner.html" %}
            <div itemprop="articleBody">
              {% block body %}{% endblock %}
            </div>
