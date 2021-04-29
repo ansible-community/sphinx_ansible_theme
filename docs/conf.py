@@ -1,59 +1,25 @@
 # -*- coding: utf-8 -*-
-#
-# documentation build configuration file, created by
-# sphinx-quickstart on Sat Sep 27 13:23:22 2008-2009.
-#
-# This file is execfile()d with the current directory set to its
-# containing dir.
-#
-# The contents of this file are pickled, so don't put values in the namespace
-# that aren't pickleable (module imports are okay, they're removed
-# automatically).
-#
-# All configuration values have a default value; values that are commented out
-# serve to show the default value.
 """Documentation Configuration."""
 
 import sys
 import os
 
-
 # pip install sphinx_ansible_theme
-import sphinx_ansible_theme
 from sphinx_ansible_theme import __version__
-# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-# If your extensions are in another directory, add it here. If the directory
-# is relative to the documentation root, use os.path.abspath to make it
-# absolute, like shown here.
-# sys.path.append(os.path.abspath('some/directory'))
-#
-sys.path.insert(0, os.path.join('ansible', 'lib'))
-# sys.path.append(os.path.abspath('_themes'))
 
-VERSION = sphinx_ansible_theme.__version__
-AUTHOR = 'Ansible, Inc'
+VERSION = __version__
+AUTHOR = 'Ansible Community'
 
 
 # General configuration
 # ---------------------
 
-# Add any Sphinx extension module names here, as strings.
-# They can be extensions
-# coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-# TEST: 'sphinxcontrib.fulltoc'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx_ansible_theme.ext.pygments_lexer',
     'notfound.extension',
 ]
-
-# Later on, add 'sphinx.ext.viewcode' to the list if you want to have
-# colorized code generated too for references.
-
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['.templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -63,13 +29,13 @@ master_doc = 'index'
 
 # General substitutions.
 project = 'Sphinx Ansible Theme'
-copyright = "2020 Red Hat, Inc."
+copyright = f'2020 {AUTHOR}'
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
 #
 # The short X.Y version.
-version = VERSION
+version = '.'.join(VERSION.split('.')[:2])
 # The full version, including alpha/beta/rc tags.
 release = VERSION
 
@@ -79,32 +45,20 @@ release = VERSION
 # Else, today_fmt is used as the format for a strftime call.
 today_fmt = '%B %d, %Y'
 
-# List of documents that shouldn't be included in the build.
-# unused_docs = []
-
-# List of directories, relative to source directories, that shouldn't be
-# searched for source files.
-# exclude_dirs = []
-
-# A list of glob-style patterns that should be excluded when looking
-# for source files.
-# OBSOLETE - removing this - dharmabumstead 2018-02-06
-# exclude_patterns = ['modules']
-
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
-# default_role = None
+default_role = 'any'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
-# add_function_parentheses = True
+add_function_parentheses = True
 
 # If true, the current module name will be prepended to all description
 # unit titles (such as .. function::).
-# add_module_names = True
+add_module_names = True
 
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.
-# show_authors = False
+show_authors = True
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -127,10 +81,8 @@ rst_epilog = """
 # Options for HTML output
 # -----------------------
 
-html_theme_path = [sphinx_ansible_theme.get_html_theme_path()]
 html_theme = 'sphinx_ansible_theme'
-html_short_title = f'{project} Documentation'
-html_show_sphinx = False
+html_show_sphinx = True
 
 html_theme_options = {
     # 'canonical_url': "https://docs.ansible.com/ansible/latest/",
@@ -151,11 +103,6 @@ html_context = {
     'available_versions': ('latest', ),
 }
 
-# The style sheet to use for HTML and HTML Help pages. A file of that name
-# must exist either in Sphinx' static/ path, or in one of the custom paths
-# given in html_static_path.
-# html_style = 'solar.css'
-
 # Add extra CSS styles to the resulting HTML pages
 html_css_files = [
     'css/color-scheme.css',
@@ -166,16 +113,7 @@ html_css_files = [
 html_title = f'{project} Documentation'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-# html_short_title = None
-
-# The name of an image file (within the static path) to place at the top of
-# the sidebar.
-# html_logo =
-
-# The name of an image file (within the static path) to use as favicon of the
-# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
-# pixels large.
-# html_favicon = 'favicon.ico'
+html_short_title = 'Documentation'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -186,39 +124,8 @@ html_static_path = ['_static']
 # using the given strftime format.
 html_last_updated_fmt = '%b %d, %Y'
 
-# If true, SmartyPants will be used to convert quotes and dashes to
-# typographically correct entities.
-# html_use_smartypants = True
-
-# Custom sidebar templates, maps document names to template names.
-# html_sidebars = {}
-
-# Additional templates that should be rendered to pages, maps page names to
-# template names.
-# html_additional_pages = {}
-
-# If false, no module index is generated.
-# html_use_modindex = True
-
-# If false, no index is generated.
-# html_use_index = True
-
-# If true, the index is split into individual pages for each letter.
-# html_split_index = False
-
 # If true, the reST sources are included in the HTML build as _sources/<name>.
 html_copy_source = False
-
-# If true, an OpenSearch description file will be output, and all pages will
-# contain a <link> tag referring to it.  The value of this option must be the
-# base URL from which the finished HTML is served.
-# html_use_opensearch = 'https://docs.ansible.com/ansible/latest'
-
-# If nonempty, this is the file name suffix for HTML files (e.g. ".xhtml").
-# html_file_suffix = ''
-
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'Poseidodoc'
 
 # Configuration for sphinx-notfound-pages
 # with no 'notfound_template' and no 'notfound_context' set,
@@ -233,45 +140,3 @@ notfound_default_language = "ansible"
 notfound_default_version = "latest"
 # makes default setting explicit:
 notfound_no_urls_prefix = False
-
-# Options for LaTeX output
-# ------------------------
-
-# The paper size ('letter' or 'a4').
-# latex_paper_size = 'letter'
-
-# The font size ('10pt', '11pt' or '12pt').
-# latex_font_size = '10pt'
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, document class
-# [howto/manual]).
-latex_documents = [
-    ('index', 'ansible.tex', 'Ansible 2.2 Documentation', AUTHOR, 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-# latex_logo = None
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-# latex_use_parts = False
-
-# Additional stuff for the LaTeX preamble.
-# latex_preamble = ''
-
-# Documents to append as an appendix to all manuals.
-# latex_appendices = []
-
-# If false, no module index is generated.
-# latex_use_modindex = True
-
-autoclass_content = 'both'
-
-# linckchecker settings
-linkcheck_ignore = [
-    r'http://irc\.freenode\.net',
-]
-linkcheck_workers = 25
-# linkcheck_anchors = False
