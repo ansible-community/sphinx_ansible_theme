@@ -149,7 +149,10 @@ html_context = {
     'latest_version': 'latest',
     # list specifically out of order to make latest work
     'available_versions': ('latest', ),
-    'css_files': ['_static/css/ansible.css'],  # overrides to the standard theme
+    'css_files': [  # overrides to the standard theme
+        '_static/css/ansible.css',
+        '_static/css/color-scheme.css',
+    ],
 }
 
 # The style sheet to use for HTML and HTML Help pages. A file of that name
