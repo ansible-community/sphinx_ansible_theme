@@ -150,7 +150,6 @@ html_context = {
     # list specifically out of order to make latest work
     'available_versions': ('latest', ),
     'css_files': [  # overrides to the standard theme
-        '_static/css/ansible.css',
         '_static/css/color-scheme.css',
     ],
 }
