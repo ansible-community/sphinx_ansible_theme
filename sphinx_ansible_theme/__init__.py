@@ -43,16 +43,6 @@ def setup(app):
         rtd_locale_path = path.join(path.abspath(path.dirname(__file__)), "locale")
         app.add_message_catalog("sphinx", rtd_locale_path)
 
-    # Automatically inject extra fonts from CDNs
-    app.add_css_file(
-        'https://fonts.googleapis.com/css?family='
-        'Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700',
-    )
-    app.add_css_file(
-        'https://cdnjs.cloudflare.com/ajax/libs'
-        '/font-awesome/4.0.3/css/font-awesome.min.css',
-    )
-
     return {
         "parallel_read_safe": True,
         "parallel_write_safe": True,
