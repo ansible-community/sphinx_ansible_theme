@@ -3,7 +3,7 @@
 {%- endif %}
 {%- if 'singlehtml' not in builder %}
 <div role="search">
-  <form id="rtd-search-form" class="wy-form"{% if not theme_show_swift and not theme_swift_id %} action="{{ pathto('search') }}"{% endif %} method="get">
+  <form id="rtd-search-form" class="wy-form"{% if not theme_swift_id %} action="{{ pathto('search') }}"{% endif %} method="get">
     <input type="text" class="st-default-search-input" name="q" placeholder="{{ _('Search docs') }}" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
