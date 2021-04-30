@@ -1,8 +1,13 @@
+.DocSiteProduct-header--core {
+    background-color: #161b1f;
+    border-color: #161b1f;
+}
+
 .wy-nav-top, .wy-side-nav-search {
     background-color: #161b1f;
 }
 .wy-nav-side {
-    background: #999999;
+    background-color: #999999;
 }
 .wy-menu-vertical header, .wy-menu-vertical p.caption {
     color: #161b1f;
