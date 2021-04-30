@@ -25,7 +25,7 @@ extensions = [
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'index'
+root_doc = master_doc = 'index'  # Sphinx 4+ / 3-
 
 # General substitutions.
 project = 'Sphinx Ansible Theme'
