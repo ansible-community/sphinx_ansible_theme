@@ -1,3 +1,16 @@
+{#-
+    Declare logo and favicon fallbacks and
+    also set their Sphinx 4 `_url` counterparts:
+#}
+{%-
+    set logo_url = logo_url
+                or logo
+                or 'images/Ansible-Mark-RGB_White.svg'
+%}
+{%- set logo = logo_url %}
+{%- set favicon_url = favicon_url or favicon or logo_url %}
+{%- set favicon = favicon_url %}
+
 {%- extends "sphinx_rtd_theme/layout.html" %}
 
 {%- block extrahead %}
