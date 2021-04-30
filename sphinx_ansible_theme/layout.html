@@ -8,7 +8,11 @@
                 or 'images/Ansible-Mark-RGB_White.svg'
 %}
 {%- set logo = logo_url %}
-{%- set favicon_url = favicon_url or favicon or logo_url %}
+{%-
+    set favicon_url = favicon_url
+                   or favicon
+                   or 'images/Ansible-Mark-RGB_Black.svg'
+%}
 {%- set favicon = favicon_url %}
 
 {%- extends "sphinx_rtd_theme/layout.html" %}
