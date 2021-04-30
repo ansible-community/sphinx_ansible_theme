@@ -19,27 +19,27 @@
 {%- extends "sphinx_rtd_theme/layout.html" %}
 
 {%- block extrahead %}
-  {%- include "ansible_extrahead.html" %}
+  {%- include "extrahead.html" %}
 {%- endblock %}
 
 {%- block extrabody %}
-  {%- include "ansible_extrabody.html" %}
+  {%- include "extrabody.html" %}
 {%- endblock %}
 
 {%- block document %}
-  {%- include "ansible_banner.html" %}
+  {%- include "banner.html" %}
 
   {{ super() }}
 {%- endblock %}
 
 {%- block footer %}
-  {%- include "ansible_extrafooter.html" %}
+  {%- include "extrafooter.html" %}
 {%- endblock %}
 
 {%- block navigation %}
   {{ super() }}
 
   {%- if theme_show_extranav %}
-    {%- block extranav %}{% include "ansible_extranav.html" %}{% endblock %}
+    {%- block extranav %}{% include "extranav.html" %}{% endblock %}
   {%- endif %}
 {%- endblock %}
