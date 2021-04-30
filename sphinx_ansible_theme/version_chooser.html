@@ -4,9 +4,9 @@
   {% if available_versions is defined %}
     <div class="version-dropdown">
       <select class="version-list" id="version-list" onchange="javascript:location.href = this.value;">
-        <script> x = document.getElementById("version-list"); </script>
+        <script>
+            x = document.getElementById("version-list");
         {% for slug in available_versions %}
-          <script>
             current_url = window.location.href;
             option = document.createElement("option");
             option.text = "{{ slug }}";
@@ -19,8 +19,8 @@
               option.value = current_url.replace("latest","{{ slug }}");
             }
             x.add(option);
-          </script>
         {% endfor %}
+        </script>
       </select>
     </div>
   {% else %}
