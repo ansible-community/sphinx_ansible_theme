@@ -19,21 +19,21 @@
 {%- extends "sphinx_rtd_theme/layout.html" %}
 
 {%- block extrahead %}
-  {%- include "extrahead.html" %}
+  {%- include "extrahead.html" ignore missing %}
 {%- endblock %}
 
 {%- block extrabody %}
-  {%- include "extrabody.html" %}
+  {%- include "extrabody.html" ignore missing %}
 {%- endblock %}
 
 {%- block document %}
-  {%- include "banner.html" %}
+  {%- include "banner.html" ignore missing %}
 
   {{ super() }}
 {%- endblock %}
 
 {%- block footer %}
-  {%- include "extrafooter.html" %}
+  {%- include "extrafooter.html" ignore missing %}
 {%- endblock %}
 
 {%- block navigation %}
