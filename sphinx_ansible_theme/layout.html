@@ -3,10 +3,11 @@
     also set their Sphinx 4 `_url` counterparts:
 #}
 {%-
-    set logo_url = logo_url
-                or logo
-                or 'images/Ansible-Mark-RGB_White.svg'
+    set ansible_logo_url = logo_url
+                        or logo
+                        or 'images/Ansible-Mark-RGB_White.svg'
 %}
+{%- set logo_url = '' %}{# Reset to prevent render in the RTD theme #}
 {%- set logo = logo_url %}
 {%-
     set favicon_url = favicon_url
