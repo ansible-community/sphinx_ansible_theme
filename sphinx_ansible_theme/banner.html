@@ -5,8 +5,13 @@
 </div>
 {% else %}
   <script>
-    startsWith = function(str, needle) {
+    function startsWith(str, needle) {
       return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
     }
     // Create a banner if we're not on the official docs site
     if (location.host == "docs.testing.ansible.com") {
@@ -23,7 +28,7 @@
         document.write('<p>You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="https://docs.ansible.com/ansible/latest">the latest documentation</a>.</p>');
         document.write('</div>');
 
-      } else if (startsWith(current_url_path, "/ansible/latest/") || startsWith(current_url_path, "/ansible/{{ latest_version }}/")) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/{{ latest_version }}/"])) {
         document.write('<div id="banner_id" class="admonition caution">');
         document.write('<p>You are reading the latest community version of the Ansible documentation. Red Hat subscribers, select <b>2.9</b> in the version selection to the left for the most recent Red Hat release.</p>');
         document.write('</div>');
