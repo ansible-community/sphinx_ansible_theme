@@ -4,7 +4,6 @@
   <p>You are reading an unmaintained version of the Ansible documentation. Unmaintained Ansible versions can contain unfixed security vulnerabilities (CVE). Please upgrade to a maintained version. See <a href="https://docs.ansible.com/ansible/latest/index.html">the latest Ansible documentation</a>.</p>
 </div>
 {% else %}
-<!--- Based on sphinx versionwarning extension. Extension currently only works on READTHEDOCS -->
   <script>
     startsWith = function(str, needle) {
       return str.slice(0, needle.length) == needle
@@ -15,7 +14,7 @@
       document.write('<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>');
       document.write('</div>');
     }
-    {% if (not READTHEDOCS) and (available_versions is defined) %}
+    {% if available_versions is defined %}
       // Create a banner
       current_url_path = window.location.pathname;
 
