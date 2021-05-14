@@ -22,6 +22,15 @@ except Exception:
 __version_full__ = __version__
 
 
+_TOP_LINKS_DEFAULTS = {
+    'AnsibleFest': 'https://www.ansible.com/ansiblefest',
+    'Products': 'https://www.ansible.com/tower',
+    'Community': 'https://www.ansible.com/community',
+    'Webinars & Training': 'https://www.ansible.com/webinars-training',
+    'Blog': 'https://www.ansible.com/blog',
+}
+
+
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     cur_dir = path.abspath(path.dirname(path.dirname(__file__)))
@@ -42,6 +51,13 @@ def setup(app):
         # See http://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx.application.Sphinx.add_message_catalog
         rtd_locale_path = path.join(path.abspath(path.dirname(__file__)), "locale")
         app.add_message_catalog("sphinx", rtd_locale_path)
+
+    # NOTE: A mapping fallback cannot be set in `theme.conf` so it has to
+    # NOTE: be set here:
+    app.config.html_theme_options['topbar_links'] = (
+        app.config.html_theme_options.
+        get('topbar_links', _TOP_LINKS_DEFAULTS)
+    )
 
     return {
         "parallel_read_safe": True,

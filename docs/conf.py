@@ -86,7 +86,14 @@ html_show_sphinx = True
 
 html_theme_options = {
     # 'canonical_url': "https://docs.ansible.com/ansible/latest/",
-    'vcs_pageview_mode': 'edit'
+    'vcs_pageview_mode': 'edit',
+    'topbar_links': {
+        'AnsibleFest': 'https://www.ansible.com/ansiblefest',
+        'Products': 'https://www.ansible.com/tower',
+        'Community': 'https://www.ansible.com/community',
+        'Webinars & Training': 'https://www.ansible.com/webinars-training',
+        'Blog': 'https://www.ansible.com/blog',
+    },
 }
 
 html_context = {
