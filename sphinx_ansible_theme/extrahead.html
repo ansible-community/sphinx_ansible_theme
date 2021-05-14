@@ -6,12 +6,13 @@
 <meta class="swiftype" name="version" data-type="string" content="{{ version }}">
 {% endif %}
 
+{%- if theme_tag_manager_id %}
 <!-- Google Tag Manager Data Layer -->
 <script>
  dataLayer = [];
 </script>
 <!-- End Google Tag Manager Data Layer -->
-
+{%- endif %}
 
 {% if theme_swift_id %}
 {# Ansible search with Swift - do not remove #}
