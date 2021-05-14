@@ -23,11 +23,11 @@ __version_full__ = __version__
 
 
 _TOP_LINKS_DEFAULTS = {
-    'AnsibleFest': 'https://www.ansible.com/ansiblefest',
-    'Products': 'https://www.ansible.com/tower',
-    'Community': 'https://www.ansible.com/community',
-    'Webinars & Training': 'https://www.ansible.com/webinars-training',
-    'Blog': 'https://www.ansible.com/blog',
+    "AnsibleFest": "https://www.ansible.com/ansiblefest",
+    "Products": "https://www.ansible.com/tower",
+    "Community": "https://www.ansible.com/community",
+    "Webinars & Training": "https://www.ansible.com/webinars-training",
+    "Blog": "https://www.ansible.com/blog",
 }
 
 
@@ -54,9 +54,8 @@ def setup(app):
 
     # NOTE: A mapping fallback cannot be set in `theme.conf` so it has to
     # NOTE: be set here:
-    app.config.html_theme_options['topbar_links'] = (
-        app.config.html_theme_options.
-        get('topbar_links', _TOP_LINKS_DEFAULTS)
+    app.config.html_theme_options["topbar_links"] = app.config.html_theme_options.get(
+        "topbar_links", _TOP_LINKS_DEFAULTS
     )
 
     return {
