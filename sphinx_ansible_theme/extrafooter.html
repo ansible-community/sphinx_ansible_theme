@@ -14,7 +14,7 @@ _hsq.push(["setContentType", "standard-page"]);
 <!-- end analytics -->
 {%- endif %}
 
-{%- if theme_satellite_tracking %}
+{%- if theme_satellite_tracking | tobool %}
 <script type="text/javascript">
 if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
   _satellite.pageBottom();

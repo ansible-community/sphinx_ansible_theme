@@ -39,7 +39,7 @@
 {%- block navigation %}
   {{ super() }}
 
-  {%- if theme_show_extranav %}
+  {%- if theme_show_extranav | tobool %}
     {%- block extranav %}{% include "extranav.html" %}{% endblock %}
   {%- endif %}
 {%- endblock %}
