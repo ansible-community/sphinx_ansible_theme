@@ -488,3 +488,8 @@ tr .ansibleOptionLink {
         margin-top: 0;
     }
 }
+
+/* Assure reading examples does not require horizontal scrolling */
+.rst-content div[class^="highlight"] pre {
+    white-space: pre-wrap;
+}

@@ -58,8 +58,6 @@ def setup(app):
         "topbar_links", _TOP_LINKS_DEFAULTS
     )
 
-    app.add_stylesheet("css/pygments.css")
-
     return {
         "parallel_read_safe": True,
         "parallel_write_safe": True,
