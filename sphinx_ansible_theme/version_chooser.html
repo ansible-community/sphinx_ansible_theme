@@ -6,10 +6,10 @@
       <script>
         function switchVersionTo(slug) {
           var current_url_path = window.location.pathname;
-          var url_version = current_url_path.search("{{ current_version }}") > -1
-            ? "{{ current_version }}"
-            : "latest";
-          var new_version_url = current_url_path.replace(url_version, slug);
+          var url_version = current_url_path.search("/{{ current_version }}/") > -1
+            ? "/{{ current_version }}/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
           window.location.replace(new_version_url);
         }
       </script>
