@@ -147,12 +147,9 @@ html_copy_source = False
 # with no 'notfound_template' and no 'notfound_context' set,
 # the extension builds 404.rst into a location-agnostic 404 page
 #
-# default is `en` - using this for the sub-site:
-notfound_default_language = "ansible"
+# default is `en`:
+notfound_default_language = "en"
 # default is `latest`:
-# setting explicitly - docsite serves up /ansible/latest/404.html
-# so keep this set to `latest` even on the `devel` branch
-# then no maintenance is needed when we branch a new stable_x.x
 notfound_default_version = "latest"
 # makes default setting explicit:
 notfound_no_urls_prefix = False
