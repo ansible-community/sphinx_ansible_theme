@@ -59,10 +59,9 @@ def setup(app):
     )
 
     add_css_file = (
-        app.add_stylesheet if sphinx.version_info < (1, 8, 0)
-        else app.add_css_file
+        app.add_stylesheet if sphinx.version_info < (1, 8, 0) else app.add_css_file
     )
-    add_css_file('css/rtd-ethical-ads.css')
+    add_css_file("css/rtd-ethical-ads.css")
 
     return {
         "parallel_read_safe": True,
