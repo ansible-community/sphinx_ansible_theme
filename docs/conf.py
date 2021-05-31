@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """Documentation Configuration."""
 
-import sys
-import os
-
 # pip install sphinx_ansible_theme
 from sphinx_ansible_theme import __version__
 
