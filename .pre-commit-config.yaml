@@ -1,7 +1,6 @@
 ---
 exclude: |
     (?x)(
-        ^sphinx_ansible_theme/static/fonts/|
         ^docs/conf.py$
     )
 repos:
