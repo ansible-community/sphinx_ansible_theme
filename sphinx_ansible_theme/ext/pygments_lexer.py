@@ -13,9 +13,8 @@ def setup(app):
 
     See http://www.sphinx-doc.org/en/stable/extdev/index.html#dev-extensions.
     """
-    lexer = AnsibleOutputLexer(startinline=True)
-    for alias in (lexer.name, *lexer.aliases):
-        app.add_lexer(alias, lexer)
+    for alias in (AnsibleOutputLexer.name, *AnsibleOutputLexer.aliases):
+        app.add_lexer(alias, AnsibleOutputLexer)
 
     return {
         "version": __version__,
