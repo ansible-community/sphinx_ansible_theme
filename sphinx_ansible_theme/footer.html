@@ -1,0 +1,14 @@
+{#-
+    Reset `show_sphinx` to prevent the RTD theme from rendering it's
+    footer and introduce a new var to instead show our own:
+#}
+{% set show_built_with = show_sphinx %}
+{% set show_sphinx = False %}
+
+{%- extends "sphinx_rtd_theme/footer.html" %}
+
+{%- block extrafooter %}
+  {{ super() }}
+
+  {%- include "built_with.html" %}
+{%- endblock %}
