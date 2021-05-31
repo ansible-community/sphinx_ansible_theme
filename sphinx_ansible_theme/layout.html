@@ -34,10 +34,13 @@
   {%- include "extrafooter.html" ignore missing %}
 {%- endblock %}
 
-{%- block navigation %}
+{%- block menu %}
   {{ super() }}
 
   {%- if theme_show_extranav | tobool %}
     {%- block extranav %}{% include "extranav.html" %}{% endblock %}
   {%- endif %}
+  {%- block rtd_ethical_ads %}
+    {%- include "rtd-ethical-ads.html" %}
+  {%- endblock %}
 {%- endblock %}
