@@ -19,3 +19,11 @@ for building projects which are part of Ansible ecosystem.
       tasks:
         - debug:
             msg: "oops!"
+
+.. code-block:: ansible-output
+
+    [WARNING]: Unable to find '/nosuchfile' in expected paths (use -vvvvv to see paths)
+
+    ok: [localhost] => {
+        "msg": ""
+    }
