@@ -132,8 +132,17 @@ jobs:
       run: |
         python -m tox --parallel auto --parallel-live --notest -vv --force-dep 'Sphinx == ${{ matrix.sphinx-version }}.*'
     - name: Test with tox
-      run: |
-        python -m tox --parallel auto --parallel-live --force-dep 'Sphinx == ${{ matrix.sphinx-version }}.*'
+      run: >-
+        python
+        -m tox
+        --parallel auto
+        --parallel-live
+        --force-dep 'Sphinx == ${{ matrix.sphinx-version }}.*'
+        --
+        ${{
+            matrix.sphinx-version != '1.6'
+            && '--keep-going' || ''
+        }}
     - name: Archive logs
       uses: actions/upload-artifact@v2
       with:
