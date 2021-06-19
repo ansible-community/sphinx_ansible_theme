@@ -22,7 +22,7 @@ on:
   - cron: 2 18 * * 5
 
 jobs:
-  tests:
+  linters:
     name: >-
       ${{ matrix.env.TOXENV }}
     runs-on: ${{ matrix.os }}
@@ -35,7 +35,6 @@ jobs:
         - ubuntu-latest
         env:
         - TOXENV: linters
-        - TOXENV: docs
         - TOXENV: packaging
     steps:
     - uses: actions/checkout@master
@@ -74,6 +73,67 @@ jobs:
       run: |
         python -m tox --parallel auto --parallel-live
       env: ${{ matrix.env }}
+    - name: Archive logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: logs.zip
+        path: .tox/**/log/
+
+  tests:
+    name: Sphinx ${{ matrix.sphinx-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+        - ubuntu-latest
+        python-version:
+        - 3.9
+        sphinx-version:
+        - 1.6
+        - 1.8
+        - 3.0
+        - 3.5
+        - 4.0
+
+    env:
+      TOXENV: docs
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Calc Py SHA-256 Ver
+      id: py-ver
+      run: echo "::set-output name=sha256-hash::$(python -VV | sha256sum | cut -d' ' -f1)"
+    - name: Pre-commit cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pre-commit
+        key: ${{ runner.os }}-pre-commit-${{ steps.py-ver.outputs.sha256-hash }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('tox.ini') }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}-${{ hashFiles('pytest.ini') }}
+    - name: Pip cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ steps.py-ver.outputs.sha256-hash }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('tox.ini') }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}-${{ hashFiles('pytest.ini') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          ${{ runner.os }}-
+    - name: Install tox
+      run: |
+        python -m pip install --upgrade tox
+    - name: Log installed dists
+      run: >-
+        python -m pip freeze --all
+    - name: >-
+        Initialize tox envs
+      run: |
+        python -m tox --parallel auto --parallel-live --notest -vv --force-dep 'Sphinx == ${{ matrix.sphinx-version }}.*'
+    - name: Test with tox
+      run: |
+        python -m tox --parallel auto --parallel-live --skip-pkg-install
     - name: Archive logs
       uses: actions/upload-artifact@v2
       with:
