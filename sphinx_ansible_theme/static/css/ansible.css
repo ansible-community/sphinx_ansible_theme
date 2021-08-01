@@ -191,16 +191,16 @@ table {
     display: block;
     max-width: 100%;
 }
-.documentation-table td,
-.documentation-table th {
-    padding: 4px;
-    border-left: 1px solid #000;
-    border-top: 1px solid #000;
-}
+
 .documentation-table {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border: 0px;
 }
+
+.rst-content table,td,tr,th { border:0; }
+.rst-content th { background-color: #6AB0DE; }
+.rst-content tr:nth-child(even) { background: #E7F2FA; }
+.rst-content tr:nth-child(odd) { background: #FFF; }
+
 @media print {
     * {
         background: 0 0 !important;
