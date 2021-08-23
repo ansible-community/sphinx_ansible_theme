@@ -484,3 +484,5 @@ tr .ansibleOptionLink {
 .rst-content div[class^="highlight"] pre {
     white-space: pre-wrap;
 }
+
+.rst-content dl dt { margin-bottom: 0; }
