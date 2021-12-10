@@ -226,6 +226,7 @@ jobs:
     if: always()
 
     needs:
+    - linters
     - tests
 
     runs-on: Ubuntu-latest
