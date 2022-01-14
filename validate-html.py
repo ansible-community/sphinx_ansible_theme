@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Simple HTML validation script.
+
+Will validate all .html files in all directories provided on the command line.
+"""
 
 import os
 import sys
