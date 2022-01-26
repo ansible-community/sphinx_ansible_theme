@@ -1,7 +1,7 @@
-<!-- extra footer elements for Ansible beyond RTD Sphinx Theme --->
+<!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
 {%- if theme_hubspot_id %}
 <!-- begin analytics -->
-<script type="text/javascript">
+<script>
 var _hsq = _hsq || [];
 _hsq.push(["setContentType", "standard-page"]);
       (function(d,s,i,r) {
@@ -15,7 +15,7 @@ _hsq.push(["setContentType", "standard-page"]);
 {%- endif %}
 
 {%- if theme_satellite_tracking | tobool %}
-<script type="text/javascript">
+<script>
 if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
   _satellite.pageBottom();
 }
