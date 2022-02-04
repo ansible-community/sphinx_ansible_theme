@@ -2,7 +2,7 @@
 {# Creates dropdown version selection in the top-left navigation. #}
 <div class="version">
   {% if available_versions is defined %}
-    <div class="version-dropdown">
+    <form class="version-dropdown" method="get">
       <script>
         function switchVersionTo(slug) {
           var current_url_path = window.location.pathname;
@@ -27,7 +27,7 @@
         </option>
         {% endfor %}
       </select>
-    </div>
+    </form>
   {% else %}
     {{ nav_version }}
   {% endif %}
