@@ -1,14 +1,29 @@
 ---
 repos:
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    # keep it before yamllint
+    rev: v2.5.1
+    hooks:
+      - id: prettier
+        # Temporary excludes so we can gradually normalize the formatting
+        exclude: >
+          (?x)^(
+            docs/_static/.*\.css|
+            sphinx_ansible_theme/.*\.css|
+            sphinx_ansible_theme/.*\.html
+          )$
+        additional_dependencies:
+          - prettier
+          - prettier-plugin-toml
   - repo: https://github.com/python/black.git
     rev: 19.10b0
     hooks:
       - id: black
         language_version: python3
         exclude: |
-            (?x)(
-                ^docs/conf.py$
-            )
+          (?x)(
+              ^docs/conf.py$
+          )
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
     rev: v2.4.0
     hooks:
@@ -30,13 +45,6 @@ repos:
           - flake8-docstrings>=1.5.0
           - flake8-mypy
         language_version: python3
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.20.0
-    hooks:
-      - id: yamllint
-        files: \.(yaml|yml)$
-        types: [file, yaml]
-        entry: yamllint --strict
 #  - repo: https://github.com/pre-commit/mirrors-mypy
 #    rev: v0.770
 #    hooks:
