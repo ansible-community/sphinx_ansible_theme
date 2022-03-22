@@ -3,13 +3,13 @@ name: gh
 on:
   push:
     branches:
-    - master
+    - main
     tags-ignore:
     - >-
       **
   pull_request:
     branches:
-    - master
+    - main
   create:  # is used for publishing to PyPI and TestPyPI
     tags:  # any tag regardless of its name, no branches
     - "[0-9]+.[0-9]+.*"
