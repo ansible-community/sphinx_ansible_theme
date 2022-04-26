@@ -2,7 +2,7 @@
 repos:
   - repo: https://github.com/pre-commit/mirrors-prettier
     # keep it before yamllint
-    rev: v2.5.1
+    rev: v2.6.2
     hooks:
       - id: prettier
         # Temporary excludes so we can gradually normalize the formatting
@@ -15,8 +15,8 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-toml
-  - repo: https://github.com/python/black.git
-    rev: 19.10b0
+  - repo: https://github.com/psf/black.git
+    rev: 22.3.0
     hooks:
       - id: black
         language_version: python3
@@ -25,7 +25,7 @@ repos:
               ^docs/conf.py$
           )
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
-    rev: v2.4.0
+    rev: v4.2.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -35,8 +35,8 @@ repos:
       - id: check-merge-conflict
       - id: debug-statements
         language_version: python3
-  - repo: https://gitlab.com/pycqa/flake8.git
-    rev: 3.7.9
+  - repo: https://github.com/pycqa/flake8.git
+    rev: 4.0.1
     hooks:
       - id: flake8
         additional_dependencies:
