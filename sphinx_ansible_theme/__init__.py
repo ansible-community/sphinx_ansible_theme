@@ -43,7 +43,8 @@ def setup(app):
     app.require_sphinx("1.6")
     # Register the theme that can be referenced without adding a theme path
     app.add_html_theme(
-        "sphinx_ansible_theme", path.abspath(path.dirname(__file__)),
+        "sphinx_ansible_theme",
+        path.abspath(path.dirname(__file__)),
     )
 
     if sphinx.version_info >= (1, 8, 0):
