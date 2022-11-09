@@ -9,8 +9,8 @@ repos:
         exclude: >
           (?x)^(
             docs/_static/.*\.css|
-            sphinx_ansible_theme/.*\.css|
-            sphinx_ansible_theme/.*\.html
+            src/sphinx_ansible_theme/.*\.css|
+            src/sphinx_ansible_theme/.*\.html
           )$
         additional_dependencies:
           - prettier
