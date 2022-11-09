@@ -45,13 +45,25 @@ repos:
           - flake8-docstrings>=1.5.0
           - flake8-mypy
         language_version: python3
-#  - repo: https://github.com/pre-commit/mirrors-mypy
-#    rev: v0.770
-#    hooks:
-#      - id: mypy
-#        # empy args needed in order to match mypy cli behavior
-#        args: []
-#        entry: mypy sphinx_ansible_theme/
-#        pass_filenames: false
-#        additional_dependencies:
-#          - packaging
+  #  - repo: https://github.com/pre-commit/mirrors-mypy
+  #    rev: v0.770
+  #    hooks:
+  #      - id: mypy
+  #        # empy args needed in order to match mypy cli behavior
+  #        args: []
+  #        entry: mypy sphinx_ansible_theme/
+  #        pass_filenames: false
+  #        additional_dependencies:
+  #          - packaging
+  - # keep at bottom as these are slower
+    repo: local
+    hooks:
+      - id: pip-compile
+        name: pip-compile
+        entry: python3.9 -m piptools compile -q --no-annotate --output-file=requirements.txt setup.cfg --extra test --strip-extras
+        language: python
+        additional_dependencies:
+          - pip-tools>=6.9.0
+        files: ^(setup\.cfg|=requirements\.txt)$
+        pass_filenames: false
+        stages: [manual]
