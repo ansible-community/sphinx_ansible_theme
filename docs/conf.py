@@ -27,9 +27,6 @@ root_doc = master_doc = 'index'  # Sphinx 4+ / 3-
 project = 'Sphinx Ansible Theme'
 copyright = f'2020 {AUTHOR}'
 
-# URL to send the user to when clicking on the title link
-documentation_home_url = '/'
-
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
 #
@@ -94,6 +91,8 @@ html_theme_options = {
         'Webinars & Training': 'https://www.ansible.com/webinars-training',
         'Blog': 'https://www.ansible.com/blog',
     },
+    # URL to send the user to when clicking on the title link
+    'documentation_home_url': '/',
 }
 
 html_context = {
