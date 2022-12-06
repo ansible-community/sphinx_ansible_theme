@@ -91,6 +91,8 @@ html_theme_options = {
         'Webinars & Training': 'https://www.ansible.com/webinars-training',
         'Blog': 'https://www.ansible.com/blog',
     },
+    # URL to send the user to when clicking on the title link
+    'documentation_home_url': '/',
 }
 
 html_context = {
