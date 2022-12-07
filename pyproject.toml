@@ -1,15 +1,72 @@
 [build-system]
 requires = [
-  "setuptools >= 41.4.0",
-  # required for "no-local-version" scheme + pyproject.toml support:
-  "setuptools_scm[toml] >= 3.5",
-  "setuptools_scm_git_archive >= 1.1",
-  "wheel >= 0.33.6",
+  "setuptools >= 63.0.0", # required by pyproject+setuptools_scm integration
+  "setuptools_scm[toml] >= 7.0.5", # required for "no-local-version" scheme
+  "wheel",
 ]
 build-backend = "setuptools.build_meta"
 
+[project]
+# https://peps.python.org/pep-0621/#readme
+requires-python = ">=3.8"
+dynamic = ["version"]
+name = "sphinx-ansible-theme"
+description = "Ansible Sphinx Theme"
+readme = "README.rst"
+authors = [{ "name" = "Ansible by Red Hat", "email" = "info@ansible.com" }]
+maintainers = [{ "name" = "Ansible by Red Hat", "email" = "info@ansible.com" }]
+license = { text = "MIT" }
+classifiers = [
+  "Development Status :: 6 - Mature",
+  "Environment :: Console",
+  "Environment :: Web Environment",
+  "Framework :: Sphinx :: Theme",
+  "Framework :: Sphinx",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python",
+  "Operating System :: OS Independent",
+  "Topic :: Documentation",
+  "Topic :: Software Development :: Documentation",
+]
+keywords = ["ansible", "sphinx", "theme"]
+dependencies = [
+  # `ansible-pygments` make the `ansible-output` lexer
+  # and `ansible` style available in the env:
+  "ansible-pygments >= 0.1.1",
+  "sphinx >= 5.3.0",
+  "sphinx-rtd-theme >= 1.1.1",
+]
+
+[project.urls]
+homepage = "https://github.com/ansible-community/sphinx_ansible_theme"
+documentation = "https://sphinx-ansible-theme.readthedocs.io/en/latest/"
+repository = "https://github.com/ansible-community/sphinx_ansible_theme"
+changelog = "https://github.com/ansible-community/sphinx_ansible_theme/releases"
+
+[project.entry-points."sphinx.html_themes"]
+sphinx_ansible_theme = "sphinx_ansible_theme"
+
+[project.optional-dependencies]
+test = ["sphinx-notfound-page"]
+
 [tool.black]
-skip-string-normalization = false
+
+[tool.mypy]
+python_version = 3.6
+color_output = true
+error_summary = true
+# TODO(ssbarnea): Remove ignores below:
+# disallow_untyped_calls=True
+# warn_redundant_casts=True
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+packages = "sphinx_ansible_theme"
 
 [tool.setuptools_scm]
 # This allows us to have version numbers that an be uploaded to test.pypi.org

@@ -56,29 +56,30 @@ repos:
           - flake8-docstrings>=1.5.0
           - flake8-mypy
         language_version: python3
-  #  - repo: https://github.com/pre-commit/mirrors-mypy
-  #    rev: v0.770
-  #    hooks:
-  #      - id: mypy
-  #        # empy args needed in order to match mypy cli behavior
-  #        args: []
-  #        entry: mypy sphinx_ansible_theme/
-  #        pass_filenames: false
-  #        additional_dependencies:
-  #          - packaging
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.991
+    hooks:
+      - id: mypy
+        # empy args needed in order to match mypy cli behavior
+        args: []
+        pass_filenames: false
+        additional_dependencies:
+          - packaging
+          - sphinx
+          - types-setuptools
   - repo: https://github.com/jazzband/pip-tools
     rev: 6.11.0
     hooks:
       - id: pip-compile
-        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt setup.cfg --extra docs --extra test --strip-extras
+        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt --extra docs --extra test --strip-extras pyproject.toml
         language: python
-        files: ^(requirements\.txt|pyproject\.toml|setup\.cfg)$
+        files: ^(requirements\.txt|pyproject\.toml)$
         alias: deps
         language_version: "3.9" # minimal we support officially
         additional_dependencies:
           - pip>=22.3.1
       - id: pip-compile
-        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt setup.cfg --extra docs --extra test --strip-extras --upgrade
+        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt --extra docs --extra test --strip-extras pyproject.toml --upgrade
         language: python
         files: ^(requirements\.txt|pyproject\.toml)$
         alias: up
