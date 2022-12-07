@@ -1,4 +1,15 @@
 ---
+ci:
+  # format compatible with commitlint
+  autoupdate_commit_msg: "chore: pre-commit autoupdate"
+  autoupdate_schedule: monthly
+  autofix_commit_msg: |
+    chore: auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+  skip:
+    # https://github.com/pre-commit-ci/issues/issues/55
+    - pip-compile
 repos:
   - repo: https://github.com/pre-commit/mirrors-prettier
     # keep it before yamllint
@@ -55,15 +66,23 @@ repos:
   #        pass_filenames: false
   #        additional_dependencies:
   #          - packaging
-  - # keep at bottom as these are slower
-    repo: local
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.11.0
     hooks:
       - id: pip-compile
-        name: pip-compile
-        entry: python3.9 -m piptools compile -q --no-annotate --output-file=requirements.txt setup.cfg --extra test --strip-extras
+        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt setup.cfg --extra docs --extra test --strip-extras
         language: python
+        files: ^(requirements\.txt|pyproject\.toml|setup\.cfg)$
+        alias: deps
+        language_version: "3.9" # minimal we support officially
         additional_dependencies:
-          - pip-tools>=6.9.0
-        files: ^(setup\.cfg|=requirements\.txt)$
-        pass_filenames: false
+          - pip>=22.3.1
+      - id: pip-compile
+        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt setup.cfg --extra docs --extra test --strip-extras --upgrade
+        language: python
+        files: ^(requirements\.txt|pyproject\.toml)$
+        alias: up
         stages: [manual]
+        language_version: "3.9" # minimal we support officially
+        additional_dependencies:
+          - pip>=22.3.1
