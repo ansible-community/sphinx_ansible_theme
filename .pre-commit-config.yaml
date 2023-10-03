@@ -56,17 +56,61 @@ repos:
           - flake8-docstrings>=1.5.0
           - flake8-mypy
         language_version: python3
-  - repo: https://github.com/pre-commit/mirrors-mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy.git
     rev: v1.4.1
     hooks:
       - id: mypy
-        # empy args needed in order to match mypy cli behavior
-        args: []
-        pass_filenames: false
+        alias: mypy-py312
+        name: MyPy, for Python 3.12
         additional_dependencies:
-          - packaging
+          - lxml # requirement of `--txt-report`
+          - Sphinx >= 3.1.2
+          - types-setuptools
+        args:
+          - --namespace-packages
+          - --python-version=3.12
+          - --txt-report=.tox/.tmp/.mypy/python-3.12
+          - src/sphinx_ansible_theme/
+        pass_filenames: false
+      - id: mypy
+        alias: mypy-py310
+        name: MyPy, for Python 3.10
+        additional_dependencies:
+          - lxml # requirement of `--txt-report`
+          - Sphinx >= 3.1.2
+          - types-setuptools
+        args:
+          - --namespace-packages
+          - --python-version=3.10
+          - --txt-report=.tox/.tmp/.mypy/python-3.10
+          - src/sphinx_ansible_theme/
+        pass_filenames: false
+      - id: mypy
+        alias: mypy-py38
+        name: MyPy, for Python 3.8
+        additional_dependencies:
+          - lxml # requirement of `--txt-report`
+          - Sphinx >= 3.1.2
+          - types-setuptools
+        args:
+          - --namespace-packages
+          - --python-version=3.8
+          - --txt-report=.tox/.tmp/.mypy/python-3.8
+          - src/sphinx_ansible_theme/
+        pass_filenames: false
+      - id: mypy
+        alias: mypy-py36
+        name: MyPy, for Python 3.6
+        additional_dependencies:
+          - lxml # requirement of `--txt-report`
           - Sphinx >= 3.1.2, < 6
           - types-setuptools
+        args:
+          - --namespace-packages
+          - --python-version=3.6
+          - --txt-report=.tox/.tmp/.mypy/python-3.6
+          - src/sphinx_ansible_theme/
+        pass_filenames: false
   - repo: https://github.com/jazzband/pip-tools
     rev: 6.14.0
     hooks:
