@@ -23,11 +23,9 @@ __version_full__ = __version__
 
 
 _TOP_LINKS_DEFAULTS = {
-    "AnsibleFest": "https://www.ansible.com/ansiblefest",
-    "Products": "https://www.ansible.com/tower",
-    "Community": "https://www.ansible.com/community",
-    "Webinars & Training": "https://www.ansible.com/webinars-training",
     "Blog": "https://www.ansible.com/blog",
+    "Ansible community forum": "https://forum.ansible.com/",
+    "Documentation": "https://docs.ansible.com/",
 }
 
 

@@ -85,11 +85,9 @@ html_theme_options = {
     # 'canonical_url': "https://docs.ansible.com/ansible/latest/",
     'vcs_pageview_mode': 'edit',
     'topbar_links': {
-        'AnsibleFest': 'https://www.ansible.com/ansiblefest',
-        'Products': 'https://www.ansible.com/tower',
-        'Community': 'https://www.ansible.com/community',
-        'Webinars & Training': 'https://www.ansible.com/webinars-training',
-        'Blog': 'https://www.ansible.com/blog',
+        'Blog': 'https://www.ansible.com/blog/',
+        'Ansible community forum': 'https://forum.ansible.com/',
+        'Documentation': 'https://docs.ansible.com/',
     },
     # URL to send the user to when clicking on the title link
     'documentation_home_url': '/',
