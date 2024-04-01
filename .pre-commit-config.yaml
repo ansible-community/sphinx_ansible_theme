@@ -27,7 +27,7 @@ repos:
           - prettier
           - prettier-plugin-toml
   - repo: https://github.com/psf/black
-    rev: 24.1.1
+    rev: 24.3.0
     hooks:
       - id: black
         language_version: python3
@@ -57,7 +57,7 @@ repos:
           - flake8-mypy
         language_version: python3
   - repo: https://github.com/pre-commit/mirrors-mypy.git
-    rev: v1.8.0
+    rev: v1.9.0
     hooks:
       - id: mypy
         alias: mypy-py312
@@ -99,7 +99,7 @@ repos:
           - src/sphinx_ansible_theme/
         pass_filenames: false
   - repo: https://github.com/jazzband/pip-tools
-    rev: 7.3.0
+    rev: 7.4.1
     hooks:
       - id: pip-compile
         entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt --extra docs --extra test --strip-extras pyproject.toml
