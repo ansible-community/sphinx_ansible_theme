@@ -27,7 +27,7 @@ repos:
           - prettier
           - prettier-plugin-toml
   - repo: https://github.com/psf/black
-    rev: 24.8.0
+    rev: 24.10.0
     hooks:
       - id: black
         language_version: python3
@@ -36,7 +36,7 @@ repos:
               ^docs/conf.py$
           )
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -57,7 +57,7 @@ repos:
           - flake8-mypy
         language_version: python3
   - repo: https://github.com/pre-commit/mirrors-mypy.git
-    rev: v1.11.2
+    rev: v1.13.0
     hooks:
       - id: mypy
         alias: mypy-py312
