@@ -1,10 +1,9 @@
 [build-system]
-requires = [
-  "setuptools >= 63.0.0", # required by pyproject+setuptools_scm integration
-  "setuptools_scm[toml] >= 7.0.5", # required for "no-local-version" scheme
-  "wheel",
-]
 build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools >= 65.3.0", # required by pyproject+setuptools_scm integration and editable installs
+  "setuptools_scm[toml] >= 7.0.5" # required for "no-local-version" scheme
+]
 
 [project]
 # https://peps.python.org/pep-0621/#readme
@@ -15,7 +14,7 @@ description = "Ansible Sphinx Theme"
 readme = "README.rst"
 authors = [{ "name" = "Ansible by Red Hat", "email" = "info@ansible.com" }]
 maintainers = [{ "name" = "Ansible by Red Hat", "email" = "info@ansible.com" }]
-license = { text = "MIT" }
+license = "MIT"
 classifiers = [
   "Development Status :: 6 - Mature",
   "Environment :: Console",
@@ -23,11 +22,12 @@ classifiers = [
   "Framework :: Sphinx :: Theme",
   "Framework :: Sphinx",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python",
@@ -59,7 +59,7 @@ test = ["sphinx-notfound-page"]
 [tool.black]
 
 [tool.mypy]
-python_version = 3.6
+python_version = "3.8"
 color_output = true
 error_summary = true
 # TODO(ssbarnea): Remove ignores below:
@@ -72,3 +72,7 @@ packages = "sphinx_ansible_theme"
 # This allows us to have version numbers that an be uploaded to test.pypi.org
 # on each push made to main branch.
 local_scheme = "no-local-version"
+
+[tool.uv.pip]
+no-annotate = true
+custom-compile-command = "tox run -e deps"
