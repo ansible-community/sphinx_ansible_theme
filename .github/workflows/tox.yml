@@ -43,15 +43,16 @@ jobs:
           key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }} }}
 
       - name: Install tox
-        run: python3 -m pip install --upgrade "tox>=4.0.0rc3"
+        run: python3 -m pip install --upgrade "tox>=4.0.0"
 
       - name: Test with tox
         run: python3 -m tox -e ${{ matrix.tox-env }}
 
       - name: Archive logs
-        uses: actions/upload-artifact@v3
+        uses: coactions/upload-artifact@v4
         with:
-          name: logs.zip
+          name: logs-${{ matrix.tox-env }}.zip
+          include-hidden-files: true
           path: .tox/**/log/
 
   check: # This job does nothing and is only used for the branch protection
