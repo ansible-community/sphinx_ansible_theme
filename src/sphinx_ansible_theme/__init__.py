@@ -12,9 +12,9 @@ __metaclass__ = type
 
 
 try:
-    import pkg_resources
+    from importlib.metadata import version
 
-    __version__ = pkg_resources.get_distribution("sphinx_ansible_theme").version
+    __version__ = version("sphinx_ansible_theme")
 except Exception:
     __version__ = "unknown"
 

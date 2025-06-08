@@ -27,7 +27,7 @@ repos:
           - prettier
           - prettier-plugin-toml
   - repo: https://github.com/psf/black
-    rev: 24.10.0
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3
@@ -47,7 +47,7 @@ repos:
       - id: debug-statements
         language_version: python3
   - repo: https://github.com/pycqa/flake8.git
-    rev: 7.1.1
+    rev: 7.2.0
     hooks:
       - id: flake8
         additional_dependencies:
@@ -57,7 +57,7 @@ repos:
           - flake8-mypy
         language_version: python3
   - repo: https://github.com/pre-commit/mirrors-mypy.git
-    rev: v1.14.1
+    rev: v1.16.0
     hooks:
       - id: mypy
         alias: mypy-py312
@@ -98,23 +98,24 @@ repos:
           - --txt-report=.tox/.tmp/.mypy/python-3.8
           - src/sphinx_ansible_theme/
         pass_filenames: false
-  - repo: https://github.com/jazzband/pip-tools
-    rev: 7.4.1
+  - # keep at bottom as these are slower
+    repo: local
     hooks:
       - id: pip-compile
-        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt --extra docs --extra test --strip-extras pyproject.toml
+        name: Check constraints files and requirements
+        entry: uv pip compile -q --all-extras --python-version=3.9 --output-file=requirements.txt pyproject.toml
         language: python
         files: ^(requirements\.txt|pyproject\.toml)$
         alias: deps
-        language_version: "3.9" # minimal we support officially
         additional_dependencies:
-          - pip>=22.3.1
+          - uv>=0.6.6
       - id: pip-compile
-        entry: pip-compile --resolver=backtracking -q --no-annotate --output-file=requirements.txt --extra docs --extra test --strip-extras pyproject.toml --upgrade
+        name: Update constraints files and requirements
         language: python
+        entry: uv pip compile -q --all-extras --python-version=3.9 --output-file=requirements.txt --upgrade pyproject.toml
+        pass_filenames: false
+        additional_dependencies:
+          - uv>=0.6.6
         files: ^(requirements\.txt|pyproject\.toml)$
         alias: up
         stages: [manual]
-        language_version: "3.9" # minimal we support officially
-        additional_dependencies:
-          - pip>=22.3.1
