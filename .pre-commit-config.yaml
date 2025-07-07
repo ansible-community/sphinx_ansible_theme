@@ -47,7 +47,7 @@ repos:
       - id: debug-statements
         language_version: python3
   - repo: https://github.com/pycqa/flake8.git
-    rev: 7.2.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         additional_dependencies:
@@ -57,7 +57,7 @@ repos:
           - flake8-mypy
         language_version: python3
   - repo: https://github.com/pre-commit/mirrors-mypy.git
-    rev: v1.16.0
+    rev: v1.16.1
     hooks:
       - id: mypy
         alias: mypy-py312
