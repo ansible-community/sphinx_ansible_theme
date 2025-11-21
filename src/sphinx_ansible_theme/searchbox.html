@@ -1,7 +1,7 @@
 {%- if theme_display_version %}
   {%- include "version_chooser.html" %}
 {%- endif %}
-{%- if 'singlehtml' not in builder %}
+{%- if theme_display_searchbox|tobool and 'singlehtml' not in builder %}
 <div role="search">
   <form id="rtd-search-form" class="wy-form"{% if not theme_swift_id %} action="{{ pathto('search') }}"{% endif %} method="get">
     <label class="sr-only" for="q">Search docs:</label>
