@@ -82,7 +82,7 @@ html_theme = 'sphinx_ansible_theme'
 html_show_sphinx = True
 
 html_theme_options = {
-    # 'canonical_url': "https://docs.ansible.com/ansible/latest/",
+    # 'canonical_url': "https://docs.ansible.com/projects/ansible/latest/",
     'vcs_pageview_mode': 'edit',
     'topbar_links': {
         'Blog': 'https://www.ansible.com/blog/',
