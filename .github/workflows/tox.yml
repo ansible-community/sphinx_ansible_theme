@@ -37,7 +37,7 @@ jobs:
 
       - name: Pre-commit cache
         if: ${{ matrix.tox-env == 'lint' }}
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }} }}
