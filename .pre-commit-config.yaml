@@ -90,7 +90,7 @@ repos:
     hooks:
       - id: pip-compile
         name: Check constraints files and requirements
-        entry: uv pip compile -q --all-extras --python-version=3.9 --output-file=requirements.txt pyproject.toml
+        entry: uv pip compile -q --all-extras --python-version=3.10 --output-file=requirements.txt pyproject.toml
         language: python
         files: ^(requirements\.txt|pyproject\.toml)$
         alias: deps
@@ -99,7 +99,7 @@ repos:
       - id: pip-compile
         name: Update constraints files and requirements
         language: python
-        entry: uv pip compile -q --all-extras --python-version=3.9 --output-file=requirements.txt --upgrade pyproject.toml
+        entry: uv pip compile -q --all-extras --python-version=3.10 --output-file=requirements.txt --upgrade pyproject.toml
         pass_filenames: false
         additional_dependencies:
           - uv>=0.6.6

@@ -7,7 +7,7 @@ requires = [
 
 [project]
 # https://peps.python.org/pep-0621/#readme
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dynamic = ["version"]
 name = "sphinx-ansible-theme"
 description = "Ansible Sphinx Theme"
@@ -28,8 +28,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: Python",
   "Operating System :: OS Independent",
   "Topic :: Documentation",
@@ -59,7 +58,7 @@ test = ["sphinx-notfound-page"]
 [tool.black]
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.10"
 color_output = true
 error_summary = true
 # TODO(ssbarnea): Remove ignores below:
