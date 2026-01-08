@@ -85,19 +85,6 @@ repos:
           - --txt-report=.tox/.tmp/.mypy/python-3.10
           - src/sphinx_ansible_theme/
         pass_filenames: false
-      - id: mypy
-        alias: mypy-py38
-        name: MyPy, for Python 3.8
-        additional_dependencies:
-          - lxml # requirement of `--txt-report`
-          - Sphinx >= 3.1.2
-          - types-setuptools
-        args:
-          - --namespace-packages
-          - --python-version=3.8
-          - --txt-report=.tox/.tmp/.mypy/python-3.8
-          - src/sphinx_ansible_theme/
-        pass_filenames: false
   - # keep at bottom as these are slower
     repo: local
     hooks:
