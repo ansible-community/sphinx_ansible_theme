@@ -60,6 +60,19 @@ repos:
     rev: v1.19.1
     hooks:
       - id: mypy
+        alias: mypy-py314
+        name: MyPy, for Python 3.14
+        additional_dependencies:
+          - lxml # requirement of `--txt-report`
+          - Sphinx >= 3.1.2
+          - types-setuptools
+        args:
+          - --namespace-packages
+          - --python-version=3.14
+          - --txt-report=.tox/.tmp/.mypy/python-3.14
+          - src/sphinx_ansible_theme/
+        pass_filenames: false
+      - id: mypy
         alias: mypy-py312
         name: MyPy, for Python 3.12
         additional_dependencies:
