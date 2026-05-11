@@ -57,7 +57,7 @@ repos:
           - flake8-mypy
         language_version: python3
   - repo: https://github.com/pre-commit/mirrors-mypy.git
-    rev: v1.20.2
+    rev: v2.0.0
     hooks:
       - id: mypy
         alias: mypy-py314
