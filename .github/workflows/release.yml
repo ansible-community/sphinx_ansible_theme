@@ -8,8 +8,13 @@ on:
 jobs:
   pypi:
     name: Publish to PyPI registry
-    environment: release
+    environment:
+      name: release
+      url: https://pypi.org/p/sphinx-ansible-theme
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
 
     env:
       FORCE_COLOR: 1
@@ -18,20 +23,23 @@ jobs:
 
     steps:
       - name: Switch to using Python 3.10 by default
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.10"
+
       - name: Install tox
         run: python3 -m pip install --user "tox>=4.0.0rc1"
+
       - name: Check out src from Git
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0 # needed by setuptools-scm
+          persist-credentials: false
+
       - name: Build dists
         run: python -m tox
+
       - name: Publish to pypi.org
         if: >- # "create" workflows run separately from "push" & "pull_request"
           github.event_name == 'release'
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.pypi_password }}
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086
